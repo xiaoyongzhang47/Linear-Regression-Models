@@ -1,0 +1,137 @@
+\usepackage{fullpage}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{dsfont}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{cases}
+\usepackage{bm}
+\usepackage[unicode]{hyperref}
+\usepackage{color}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{tocloft}
+\usepackage{soul}
+\usepackage{xparse} % for theorem env
+\usepackage{etoolbox} % for theorem env
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+\usepackage[backend=bibtex]{biblatex}
+\addbibresource{ref.bib}
+
+% === List of Problems ===
+\newcommand{\listproblemname}{List of Problems}
+\newlistof[section]{problem}{prob}{\listproblemname}
+
+% === \problem[Optional Name] ===
+\NewDocumentCommand{\problem}{o}{%
+  \refstepcounter{problem}%
+  \noindent
+    \textbf{Problem~\theproblem\IfValueT{#1}{\ (#1)}.\ }%
+  \addcontentsline{prob}{problem}{%
+    \protect\numberline{\theproblem}%
+      \IfValueT{#1}{\ \ \ \ #1}%
+  }%
+  \ignorespaces
+}
+
+% === list of theorems ===
+\newcommand{\listtheoremmname}{List of Theorems}
+\newlistof[section]{theorem}{theo}{\listtheoremmname}
+
+
+% === \theorem[Optional Name] ===
+\NewDocumentCommand{\theorem}{o}{%
+  % step the counter
+  \refstepcounter{theorem}%
+  % typeset heading inline, with optional name in () if given
+  \noindent
+    \textbf{Theorem~\thetheorem\IfValueT{#1}{\ (#1)}.\ }%
+  % add to the list, only including the name if present
+  \addcontentsline{theo}{theorem}{%
+    \protect\numberline{\thetheorem}%
+      \IfValueT{#1}{\ \ \ \ #1}%
+  }%
+  % eat any spaces so that the body follows immediately
+  \ignorespaces
+}
+
+
+% === list of corollaries ===
+\newcommand{\listcorollarymname}{List of Corollaries}
+\newlistof[section]{corollary}{corl}{\listcorollarymname}
+
+% === \corollary[Optional Name] ===
+\NewDocumentCommand{\corollary}{o}{
+  \refstepcounter{corollary}
+  \noindent
+    \textbf{Corollary~\thecorollary\IfValueT{#1}{\ (#1)}.\ }
+  \addcontentsline{corl}{corollary}{
+    \protect\numberline{\thecorollary}
+      \IfValueT{#1}{\ \ \ \ #1}
+  }
+  \ignorespaces
+}
+
+% === List of Conclusions ===
+\newcommand{\listconclusionmname}{List of Conclusions}
+\newlistof[section]{conclusion}{conc}{\listconclusionmname}
+
+% === \conclusion[Optional Name] ===
+\NewDocumentCommand{\conclusion}{o}{%
+  \refstepcounter{conclusion}%
+  \noindent
+    \textbf{Conclusion~\theconclusion\IfValueT{#1}{\ (#1)}.\ }%
+  \addcontentsline{conc}{conclusion}{%
+    \protect\numberline{\theconclusion}%
+      \IfValueT{#1}{\ \ \ \ #1}%
+  }%
+  \ignorespaces
+}
+
+% === List of Propositions ===
+\newcommand{\listpropositionname}{List of Propositions}
+\newlistof[section]{proposition}{prop}{\listpropositionname}
+
+% === \proposition[Optional Name] ===
+\NewDocumentCommand{\proposition}{o}{%
+  \refstepcounter{proposition}%
+  \noindent
+    \textbf{Proposition~\theproposition\IfValueT{#1}{\ (#1)}.\ }%
+  \addcontentsline{prop}{proposition}{%
+    \protect\numberline{\theproposition}%
+      \IfValueT{#1}{\ \ \ \ #1}%
+  }%
+  \ignorespaces
+}
+
+% === List of Lemmas ===
+\newcommand{\listlemmaname}{List of Lemmas}
+\newlistof[section]{lemma}{lemm}{\listlemmaname}
+
+% === \lemma[Optional Name] ===
+\NewDocumentCommand{\lemma}{o}{%
+  \refstepcounter{lemma}%
+  \noindent
+    \textbf{Lemma~\thelemma\IfValueT{#1}{\ (#1)}.\ }%
+  \addcontentsline{lemm}{lemma}{%
+    \protect\numberline{\thelemma}%
+      \IfValueT{#1}{\ \ \ \ #1}%
+  }%
+  \ignorespaces
+}
+
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\varr}{\mathbb Var}
+\DeclareMathOperator{\cov}{\mathbb Cov}
+\DeclareMathOperator{\corr}{corr}
+\newcommand{\T}{{\mathsf{T}}}
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
